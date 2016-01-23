@@ -3,6 +3,7 @@ var pg = require('pg');
 var bodyParser = require('body-parser');
 //var connectionString = 'postgres://localhost:5432/dvdrental';
 //var connectionString = 'postgres://postgres:forob1nc.@localhost/dvdrental';
+var msg = 'welcome to my api';
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -37,6 +38,7 @@ actorRouter.route('/actor')
           if (err)
             res.status(500).send(err);
           else
+            msg = '2nd message';
             res.send(results);
         })
       })
@@ -119,7 +121,8 @@ app.use('/api/address', addressRouter);
 app.use('/api/category', categoryRouter);
 
 app.get('/', function(req, res) {
-  res.send('welcome to my api');
+//  res.send('welcome to my api');
+  res.send(msg);
 });
 
 app.listen(port, function() {
