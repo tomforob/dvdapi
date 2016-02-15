@@ -132,7 +132,7 @@ app.use('/api/category', categoryRouter);
 app.get('/', function(req, res) {
 //  res.send('welcome to my api');
   res.send(msg + numcpus + ' ' + process.env.WEB_MEMORY);
-  console.log(util.inspect(process.memory_Usage()));
+  console.log(util.inspect(process.memoryUsage()));
   });
 
 app.listen(port, function() {
