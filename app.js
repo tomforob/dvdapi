@@ -2,6 +2,7 @@ var express = require('express');
 var pg = require('pg');
 var bodyParser = require('body-parser');
 var numcpus = require('os').cpus().length;
+var util = require('util');
 //var connectionString = 'postgres://localhost:5432/dvdrental';
 //var connectionString = 'postgres://postgres:forob1nc.@localhost/dvdrental';
 var msg = 'welcome to my api ';
@@ -130,7 +131,9 @@ app.use('/api/category', categoryRouter);
 
 app.get('/', function(req, res) {
 //  res.send('welcome to my api');
-  res.send(msg + numcpus + ' ' + process.env.WEB_CONCURRENCY);
+  res.send(msg + numcpus + ' ' + process.env.web_memory);
+  res.send(process.memoryusage());
+  res.send(util.inspect(process.memoryusage()));
 });
 
 app.listen(port, function() {
