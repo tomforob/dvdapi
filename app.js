@@ -1,9 +1,10 @@
 var express = require('express');
 var pg = require('pg');
 var bodyParser = require('body-parser');
+var numcpus = require('os').cpus().length;
 //var connectionString = 'postgres://localhost:5432/dvdrental';
 //var connectionString = 'postgres://postgres:forob1nc.@localhost/dvdrental';
-var msg = 'welcome to my api';
+var msg = 'welcome to my api ';
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ actorRouter.route('/actor')
 //              client.query("select actor_insert_json($1)", [data],
               client.query("select * from actor_post($1)", [data],
                 function (err, results) {
+                done();
                 if (err)
                     res.status(500).send(err);
                 else
@@ -35,11 +37,12 @@ actorRouter.route('/actor')
 //      var results = [];
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
           client.query("SELECT * from actor", function(err, results) {
+          done();
           if (err)
             res.status(500).send(err);
           else
-            msg = '2nd message';
             res.send(results);
+          msg = '2nd message ';
         })
       })
     });
@@ -50,6 +53,7 @@ actorRouter.route('/actor/:actorid')
             client.query("UPDATE actor SET first_name=($1), last_name=($2), last_update=DEFAULT WHERE actor_id=($3)",
                 [data.first_name, data.last_name, req.params.actorid],
                 function (err, results) {
+                    done();
                     if (err)
                         res.status(500).send(err);
                     else
@@ -62,6 +66,7 @@ actorRouter.route('/actor/:actorid')
         pg.connect(process.env.DATABASE_URL, function (err, client, done) {
             client.query("DELETE FROM actor WHERE actor_id=($1)", [req.params.actorid],
                 function (err, results) {
+                    done();
                     if (err)
                         res.status(500).send(err);
                     else
@@ -76,6 +81,7 @@ actorRouter.route('/actor/:actorid')
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 //        res.send(req.params.actorid);
         client.query("SELECT * from actor where actor_id = " + req.params.actorid, function(err, results) {
+        done();
         if (err)
           res.status(500).send(err);
         else
@@ -92,6 +98,7 @@ addressRouter.route('')
 //      var results = [];
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query("SELECT * from address", function(err, results) {
+        done();
         if (err)
           res.status(500).send(err);
         else
@@ -108,6 +115,7 @@ categoryRouter.route('')
 //      var results = [];
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query("SELECT * from category", function(err, results) {
+        done();
         if (err)
           res.status(500).send(err);
         else
@@ -122,7 +130,7 @@ app.use('/api/category', categoryRouter);
 
 app.get('/', function(req, res) {
 //  res.send('welcome to my api');
-  res.send(msg);
+  res.send(msg + numcpus);
 });
 
 app.listen(port, function() {
