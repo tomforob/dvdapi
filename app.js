@@ -131,10 +131,10 @@ app.use('/api/category', categoryRouter);
 
 app.get('/', function(req, res) {
 //  res.send('welcome to my api');
-  //res.send(msg + numcpus + ' ' + process.env.WEB_MEMORY);
-  res.send(util.inspect(process.memoryUsage()));
+  res.send(msg + numcpus + ' ' + process.env.WEB_MEMORY);
+  //res.send(util.inspect(process.memoryUsage()));
   });
 
 app.listen(port, function() {
-  console.log('Running on Port: '+ port)
+  console.log('Running on Port: ' + port);
 });
