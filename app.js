@@ -130,7 +130,7 @@ app.use('/api/category', categoryRouter);
 
 app.get('/', function(req, res) {
 //  res.send('welcome to my api');
-  res.send(msg + numcpus);
+  res.send(msg + numcpus + ' ' + process.env.WEB_CONCURRENCY);
 });
 
 app.listen(port, function() {
