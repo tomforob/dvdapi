@@ -132,7 +132,7 @@ app.use('/api/category', categoryRouter);
 app.get('/', function(req, res) {
 //  res.send('welcome to my api');
 // res.send(msg + numcpus + ' ' + process.env.WEB_MEMORY);
-  res.render('index');
+  res.render('indx');
   //res.send(util.inspect(process.memoryUsage()));
   });
 
