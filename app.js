@@ -12,6 +12,9 @@ var port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.set('views',__dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 var actorRouter = express.Router();
 actorRouter.route('/actor')
     .post(function(req, res) {
@@ -132,7 +135,7 @@ app.use('/api/category', categoryRouter);
 app.get('/', function(req, res) {
 //  res.send('welcome to my api');
 // res.send(msg + numcpus + ' ' + process.env.WEB_MEMORY);
-  res.render('indx');
+  res.render('index');
   //res.send(util.inspect(process.memoryUsage()));
   });
 
