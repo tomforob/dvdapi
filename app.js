@@ -11,9 +11,9 @@ var msg = 'welcome to my api ';
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.use(stormpath.init(app, {
-  website: true
-}));
+//app.use(stormpath.init(app, {
+//  website: true
+//}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set('views',__dirname + '/views');
@@ -143,8 +143,8 @@ app.get('/', function(req, res) {
   res.render('index');
   //res.send(util.inspect(process.memoryUsage()));
   });
-app.on('stormpath.ready', function() {
+//app.on('stormpath.ready', function() {
   app.listen(port, function() {
     console.log('Running on Port: ' + port);
   });
-});
+//});
