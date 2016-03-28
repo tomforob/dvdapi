@@ -1,5 +1,5 @@
 var express = require('express');
-var stormpath = require('express-stormpath');
+//var stormpath = require('express-stormpath');
 var pg = require('pg');
 var bodyParser = require('body-parser');
 var numcpus = require('os').cpus().length;
