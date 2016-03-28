@@ -20,7 +20,7 @@ app.set('views',__dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 var actorRouter = express.Router();
-actorRouter.use(stormpath.loginRequired);
+//actorRouter.use(stormpath.loginRequired);
 actorRouter.route('/actor')
     .post(function(req, res) {
         var data = req.body;
