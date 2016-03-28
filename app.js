@@ -11,7 +11,7 @@ var msg = 'welcome to my api ';
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.use(stormpath.ini(app, {
+app.use(stormpath.init(app, {
   website: true
 }));
 app.use(bodyParser.urlencoded({extended: true}));
