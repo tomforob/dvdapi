@@ -137,7 +137,7 @@ app.use('/api', actorRouter);
 app.use('/api/address', addressRouter);
 app.use('/api/category', categoryRouter);
 
-app.get('/', stormpath.loginrequired, function(req, res) {
+app.get('/', stormpath.loginRequired, function(req, res) {
 //  res.send('welcome to my api');
 // res.send(msg + numcpus + ' ' + process.env.WEB_MEMORY);
   res.render('index');
