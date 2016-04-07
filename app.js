@@ -145,7 +145,7 @@ app.get('/', function(req, res) {
   //res.send(util.inspect(process.memoryUsage()));
   });
 //app.on('stormpath.ready', function() {
-//  app.listen(port, function() {
-//    console.log('Running on Port: ' + port);
-//  });
+  app.listen(port, function() {
+    console.log('Running on Port: ' + port);
+  });
 //});
