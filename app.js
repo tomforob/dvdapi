@@ -1,5 +1,5 @@
 var express = require('express');
-var stormpath = require('express-stormpath');
+//var stormpath = require('express-stormpath');
 var pg = require('pg');
 var bodyParser = require('body-parser');
 var numcpus = require('os').cpus().length;
@@ -11,16 +11,16 @@ var msg = 'welcome to my api ';
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.use(stormpath.init(app, {
-  website: true
-}));
+//app.use(stormpath.init(app, {
+//  website: true
+//}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set('views',__dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 var actorRouter = express.Router();
-actorRouter.use(stormpath.loginRequired);
+//actorRouter.use(stormpath.loginRequired);
 actorRouter.route('/actor')
     .post(function(req, res) {
         var data = req.body;
@@ -137,7 +137,8 @@ app.use('/api', actorRouter);
 app.use('/api/address', addressRouter);
 app.use('/api/category', categoryRouter);
 
-app.get('/', stormpath.loginRequired, function(req, res) {
+app.get('/', function(req, res) {
+//app.get('/', stormpath.loginRequired, function(req, res) {
 //  res.send('welcome to my api');
 // res.send(msg + numcpus + ' ' + process.env.WEB_MEMORY);
   res.render('index');
