@@ -45,7 +45,8 @@ actorRouter.route('/actor')
 //      res.json(responseJson);
 //      var results = [];
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-          client.query("SELECT * from actor", function(err, results) {
+//          client.query("SELECT * from actor", function(err, results) {
+          client.query("SELECT last_update in time zone 'US/Arizona' from actor", function(err, results) {
           done();
           if (err)
             res.status(500).send(err);

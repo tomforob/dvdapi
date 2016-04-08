@@ -1,0 +1,1 @@
+pg_dump --no-acl --no-owner -h localhost -U postgres dvdactor | heroku pg:psql
