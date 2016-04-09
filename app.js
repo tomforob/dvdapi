@@ -1,6 +1,7 @@
 var express = require('express');
 //var stormpath = require('express-stormpath');
 var pg = require('pg');
+var types = require('pg').types;
 types.setTypeParser(1114, function(stringValue) {
  return stringValue;
 })
