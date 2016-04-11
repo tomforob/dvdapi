@@ -2,12 +2,12 @@ var express = require('express');
 //var stormpath = require('express-stormpath');
 var pg = require('pg');
 var types = require('pg').types;
-types.setTypeParser(1114, function(stringValue) {
- return stringValue;
-})
-types.setTypeParser(1184, function(stringValue) {
-  return stringValue;
-})
+//types.setTypeParser(1114, function(stringValue) {
+// return stringValue;
+//})
+//types.setTypeParser(1184, function(stringValue) {
+//  return stringValue;
+//})
 var bodyParser = require('body-parser');
 var numcpus = require('os').cpus().length;
 //var util = require('util');
