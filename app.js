@@ -28,10 +28,10 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 var actorRouter = express.Router();
 //actorRouter.use(stormpath.loginRequired);
-      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+///      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 //          client.query("SELECT * from actor", function(err, results) {
-          client.query("set timezone = 'America/New_York'", function(err, results) {
-          done();
+///          client.query("set timezone = 'America/New_York'", function(err, results) {
+///          done();
  //         if (err)
  //           res.status(500).send(err);
  //         else
